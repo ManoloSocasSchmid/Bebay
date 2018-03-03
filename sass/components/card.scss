@@ -1,0 +1,11 @@
+.card {
+    width: 18rem;
+    transition: all 1s ease;
+    flex: none !important;
+    .card-img-top {
+        width: fit-content;
+    }
+    &:hover {
+        box-shadow: 0 27px 24px 0 rgba(0, 0, 0, .2), 0 40px 77px 0 rgba(0, 0, 0, .22);
+    }
+}

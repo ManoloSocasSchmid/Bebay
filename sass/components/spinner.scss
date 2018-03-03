@@ -1,0 +1,61 @@
+/* START Spinner */
+
+$itemSize: 50;
+$itemSpacing: 2;
+$loaderColor: rgba(162, 185, 209, 0.7);
+$loaderDelay: 100;
+$loaderDuration: 2000;
+$animationTiming: cubic-bezier(.645, .045, .355, 1);
+.loader {
+    display: block;
+    overflow: hidden; // margin-bottom: 15%;
+    font-size: 0;
+    text-align: center;
+    margin-top: 20%;
+}
+
+.loader--3d {
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.loader-item {
+    display: inline-block;
+    width: $itemSize + px;
+    height: $itemSize + px;
+    margin-left: $itemSpacing + px;
+    background-color: $loaderColor;
+    color: $loaderColor;
+    animation-duration: $loaderDuration + ms;
+    animation-timing-function: $animationTiming;
+    animation-iteration-count: infinite;
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+            animation-delay: ($i * $loaderDelay) + ms;
+        }
+    }
+    .loader--flipHoz & {
+        animation-name: flipHoz;
+    }
+    .loader--flipHoz & {
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                animation-delay: ($i * $loaderDelay*1.5) + ms;
+            }
+        }
+    }
+}
+
+@keyframes flipHoz {
+    0% {
+        transform: rotateY(0deg);
+    }
+    40% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+/* END Spinner */
