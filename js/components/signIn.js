@@ -52,7 +52,7 @@ class SignIn extends React.Component {
                                 <a id="signInGoogle" className="btn btn-block btn-google">
                                     <i className="fab fa-google"></i> SignIn with Google
                                 </a>
-                                <div id="loginFacebook" className="btn btn-block btn-facebook">
+                                <div id="signInFacebook" className="btn btn-block btn-facebook">
                                     <i className="fab fa-facebook"></i> SignIn with Facebook
                                 </div>
                                 <a id="signInGit" className="btn btn-block btn-github">

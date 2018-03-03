@@ -1,7 +1,7 @@
 /**
  * Components for whapper, if error in the page.
  */
-class Error extends React.Component {
+class ErrorView extends React.Component {
     /**
      * @return {ReactComponent}
      */
@@ -27,5 +27,5 @@ class Error extends React.Component {
  */
 function doError() {
     $('.container-fluid').children().remove();
-    React.render(<Error/>, document.getElementsByClassName('container-fluid')[0]);
+    React.render(<ErrorView/>, document.getElementsByClassName('container-fluid')[0]);
 }

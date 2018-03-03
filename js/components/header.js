@@ -11,7 +11,7 @@ class Header extends React.Component {
             <nav className="navbar navbar-dark bg-dark">
                 <div className="left">
                     <a className="navbar-brand" href="#">
-                        <img src="/assets/svg/logo.svg" width="100wv" />
+                        <img src="assets/svg/logo.svg" width="100wv" />
                         <h1 className="ml-4 align-middle d-inline">Bebay</h1>
                     </a>
                 </div>
