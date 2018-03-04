@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/signIn.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/signIn.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * SignIn form
+ */
+class SignIn extends React.Component {
+    // /** */
+    // componentDidMount() {
+    //     $(this).on('submit', 'form', validateSignUp);
+    // }
+    /**
+     * @return {component}
+     */
+    render() {
+        return (
+            &lt;div id="signInModal" className="modal" tabIndex="-1" role="dialog" aria-hidden="true">
+                &lt;div className="modal-dialog" role="document">
+                    &lt;div className="modal-content">
+                        &lt;div className="modal-header">
+                            &lt;h5>SignIn to Project X (DEW Prices)&lt;/h5>
+                            &lt;button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                &lt;span aria-hidden="true">&amp;times;&lt;/span>
+                            &lt;/button>
+                        &lt;/div>
+                        &lt;div className="modal-body">
+                            &lt;form className="needs-valdation" noValidate>
+                                &lt;div className="form-group">
+                                    &lt;label htmlFor="emailSignIn">Email Address&lt;/label>
+                                    &lt;input className="form-control" type="email" id="emailSignIn" placeholder="e.g. luke@thelastjedi.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required />
+                                    &lt;div className="valid-feedback">
+                                        Looks good!
+                                    &lt;/div>
+                                    &lt;div className="invalid-feedback">
+                                        It must be a valid email.
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;div className="form-group">
+                                    &lt;label htmlFor="passSignIn">Password:&lt;/label>
+                                    &lt;input className="form-control" type="password" id="passSignIn" placeholder="e.g. yodaforce" pattern=".{6,}" required />
+                                    &lt;div className="valid-feedback">
+                                        Looks good!
+                                    &lt;/div>
+                                    &lt;div className="invalid-feedback">
+                                        Password should atleast 6 characters.
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;button className="btn btn-primary">SignIn&lt;/button>
+                            &lt;/form>
+                            &lt;h5 className="text-center">Or use one of these&lt;/h5>
+                            &lt;div className="d-flex flex-column text-white">
+                                &lt;a id="signInTwitter" className="btn btn-block btn-twitter">
+                                    &lt;i className="fab fa-twitter">&lt;/i> SignIn with Twitter
+                                &lt;/a>
+                                &lt;a id="signInGoogle" className="btn btn-block btn-google">
+                                    &lt;i className="fab fa-google">&lt;/i> SignIn with Google
+                                &lt;/a>
+                                &lt;div id="signInFacebook" className="btn btn-block btn-facebook">
+                                    &lt;i className="fab fa-facebook">&lt;/i> SignIn with Facebook
+                                &lt;/div>
+                                &lt;a id="signInGit" className="btn btn-block btn-github">
+                                    &lt;i className="fab fa-github">&lt;/i> SignIn with GitHub
+                                &lt;/a>
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;div className="modal-footer justify-content-between">
+                            &lt;h6>Still don't have an account?&lt;/h6>
+                            &lt;a className="changeSignUpIn" href="#">SignUp&lt;/a>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        );
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdvancedSearch.html">AdvancedSearch</a></li><li><a href="Article.html">Article</a></li><li><a href="Card.html">Card</a></li><li><a href="CardData.html">CardData</a></li><li><a href="Data.html">Data</a></li><li><a href="ErrorView.html">ErrorView</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="Main.html">Main</a></li><li><a href="MainBody.html">MainBody</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Spinner.html">Spinner</a></li><li><a href="SpinnerModal.html">SpinnerModal</a></li><li><a href="Wrapper.html">Wrapper</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#aUserLoggedIn">aUserLoggedIn</a></li><li><a href="global.html#bestBuyApiKey">bestBuyApiKey</a></li><li><a href="global.html#bestBuyCats">bestBuyCats</a></li><li><a href="global.html#buttonsSign">buttonsSign</a></li><li><a href="global.html#callBestBuy">callBestBuy</a></li><li><a href="global.html#callEbay">callEbay</a></li><li><a href="global.html#changeEuro">changeEuro</a></li><li><a href="global.html#changeSearch">changeSearch</a></li><li><a href="global.html#changeSignUpIn">changeSignUpIn</a></li><li><a href="global.html#changeUsd">changeUsd</a></li><li><a href="global.html#checkLoged">checkLoged</a></li><li><a href="global.html#containers">containers</a></li><li><a href="global.html#createBestBuyUrl">createBestBuyUrl</a></li><li><a href="global.html#createBuyItemEvent">createBuyItemEvent</a></li><li><a href="global.html#createData">createData</a></li><li><a href="global.html#createEbayUrl">createEbayUrl</a></li><li><a href="global.html#createTabContent">createTabContent</a></li><li><a href="global.html#doError">doError</a></li><li><a href="global.html#doTheSignIn">doTheSignIn</a></li><li><a href="global.html#ebayKeyWords">ebayKeyWords</a></li><li><a href="global.html#getBrand">getBrand</a></li><li><a href="global.html#getFilters">getFilters</a></li><li><a href="global.html#getTabIndex">getTabIndex</a></li><li><a href="global.html#hideModalSpinner">hideModalSpinner</a></li><li><a href="global.html#hideSearch">hideSearch</a></li><li><a href="global.html#hideSpinner">hideSpinner</a></li><li><a href="global.html#keyEbay">keyEbay</a></li><li><a href="global.html#loadLimitsRangeSlider">loadLimitsRangeSlider</a></li><li><a href="global.html#logOutAccount">logOutAccount</a></li><li><a href="global.html#lowerVal">lowerVal</a></li><li><a href="global.html#pageSize">pageSize</a></li><li><a href="global.html#paginate">paginate</a></li><li><a href="global.html#paginateTabs">paginateTabs</a></li><li><a href="global.html#patt">patt</a></li><li><a href="global.html#searchItem">searchItem</a></li><li><a href="global.html#showModalSpinner">showModalSpinner</a></li><li><a href="global.html#showSpinner">showSpinner</a></li><li><a href="global.html#signInFacebook">signInFacebook</a></li><li><a href="global.html#signinGit">signinGit</a></li><li><a href="global.html#signInGoogle">signInGoogle</a></li><li><a href="global.html#signinTwitter">signinTwitter</a></li><li><a href="global.html#signInWith">signInWith</a></li><li><a href="global.html#tabIndex">tabIndex</a></li><li><a href="global.html#upperVal">upperVal</a></li><li><a href="global.html#validateSignIn">validateSignIn</a></li><li><a href="global.html#validateSignUp">validateSignUp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 04 2018 16:19:50 GMT+0000 (Hora estándar GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

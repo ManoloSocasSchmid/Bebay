@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Creates the whole app body
+ */
+class Main extends React.Component {
+    /**
+     * @return {ReactComponent}
+     */
+    render() {
+        return (
+            &lt;div>
+                &lt;MainBody/>
+            &lt;/div>
+        );
+    }
+}
+React.render( &lt; Main />, document.body);
+
+/**
+ * Store the social-media which was login
+ */
+let signInWith;
+
+/**
+ * Store the buttons nodes to rewrite again, when logout
+ */
+let buttonsSign;
+
+/**
+ * Boolean, true if there is a user logged in
+ */
+let aUserLoggedIn = false;
+
+$('#signInTwitter').on('click', signinTwitter);
+$('#signInGit').on('click', signinGit);
+$('#signInGoogle').on('click', signInGoogle);
+$('#signInFacebook').on('click', signInFacebook);
+
+/**
+ * Listener to the change state authenticate, print the hello in the header
+ */
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        aUserLoggedIn = true;
+        let $divButtonsHeader = $('#buttonsSign');
+        buttonsSign = $divButtonsHeader.children().detach();
+        let welcome =
+            `Greetings my young Padawan 
+                ${user.displayName || user.email.split('@')[0]}, 
+            &lt;h5>
+                &lt;span id="logout" class="badge badge-light ml-2 align-top">
+                    Log out&lt;/span>
+            &lt;/h5>`;
+        $divButtonsHeader.append(welcome);
+        signInWith = 'twitter';
+        $('#logout').on('click', logOutAccount);
+        $('#signInModal').modal('hide');
+        $('#signUpModal').modal('hide');
+    }
+});
+
+/**
+ * Do logout depending the api which did login
+ */
+function logOutAccount() {
+    if (signInWith == 'twitter') {
+        firebase.auth().signOut().catch(function(error) {});
+    }
+
+    if (signInWith == 'facebook') {
+        FB.logout();
+    }
+
+    aUserLoggedIn = false;
+
+    let $divButtonsHeader = $('#buttonsSign');
+    $divButtonsHeader.empty();
+    $divButtonsHeader.append(buttonsSign);
+}
+
+React.render(&lt;Main/>, document.body);
+
+/**
+ * while you write we searchitems
+ */
+$('#searchField').on('keyup', function() {
+    searchItem();
+});
+
+/**
+ * function for advanced search click and key events
+ */
+$('#advancedSearch').find('button').on('click', function() {
+    searchItem();
+});
+
+/**
+ * advanced search enter function
+ */
+$('#advancedSearch').on('keypress', function(event) {
+    if (event.keyCode == 13) {
+        searchItem();
+    }
+});
+
+/**
+ *  on submit of modal validate signup
+ */
+$('#signUpModal').on('submit', 'form', validateSignUp);
+
+// on submit of singin validate signup
+$('#signInModal').on('submit', 'form', validateSignIn);
+
+// on keypress "Enter" this form submits.
+$('form').on('keypress', function(event) {
+    if (event.keyCode == 13) {
+       this.submit();
+    }
+});
+
+/**
+ * Paginate function from plugin
+ * @param {Object} options
+ */
+function paginate(options) {
+    let items = $(options.itemSelector);
+    let numItems = items.length;
+    let perPage = options.itemsPerPage;
+    items.slice(perPage).hide();
+    $(options.paginationSelector).pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        cssStyle: 'dark-theme',
+        onPageClick: function(pageNumber) {
+            let showFrom = perPage * (pageNumber - 1);
+            let showTo = showFrom + perPage;
+            items.hide()
+                .slice(showFrom, showTo).show();
+            return false;
+        },
+    });
+}
+
+/**
+ * function designed to paginate all 3 tabs leaving
+ * 12 elements per page
+ */
+function paginateTabs() {
+    paginate({
+        itemSelector: '#nav-smartPhones .card-group .card',
+        paginationSelector: '#nav-smartPhones .pagination',
+        itemsPerPage: 12,
+    });
+    paginate({
+        itemSelector: '#nav-tv .card-group .card',
+        paginationSelector: '#nav-tv .pagination',
+        itemsPerPage: 12,
+    });
+    paginate({
+        itemSelector: '#nav-health .card-group .card',
+        paginationSelector: '#nav-health .pagination',
+        itemsPerPage: 12,
+    });
+}
+
+// When de body is ready we get all tabs rdy loading the data.
+$(document).ready(function() {
+    showModalSpinner();
+    for (let i = 0; i &lt; ebayKeyWords.length; i++) {
+        callEbay(ebayKeyWords[i], bestBuyCats[i], containers[i]);
+    }
+    loadLimitsRangeSlider();
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdvancedSearch.html">AdvancedSearch</a></li><li><a href="Article.html">Article</a></li><li><a href="Card.html">Card</a></li><li><a href="CardData.html">CardData</a></li><li><a href="Data.html">Data</a></li><li><a href="ErrorView.html">ErrorView</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="Main.html">Main</a></li><li><a href="MainBody.html">MainBody</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Spinner.html">Spinner</a></li><li><a href="SpinnerModal.html">SpinnerModal</a></li><li><a href="Wrapper.html">Wrapper</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#aUserLoggedIn">aUserLoggedIn</a></li><li><a href="global.html#bestBuyApiKey">bestBuyApiKey</a></li><li><a href="global.html#bestBuyCats">bestBuyCats</a></li><li><a href="global.html#buttonsSign">buttonsSign</a></li><li><a href="global.html#callBestBuy">callBestBuy</a></li><li><a href="global.html#callEbay">callEbay</a></li><li><a href="global.html#changeEuro">changeEuro</a></li><li><a href="global.html#changeSearch">changeSearch</a></li><li><a href="global.html#changeSignUpIn">changeSignUpIn</a></li><li><a href="global.html#changeUsd">changeUsd</a></li><li><a href="global.html#checkLoged">checkLoged</a></li><li><a href="global.html#containers">containers</a></li><li><a href="global.html#createBestBuyUrl">createBestBuyUrl</a></li><li><a href="global.html#createBuyItemEvent">createBuyItemEvent</a></li><li><a href="global.html#createData">createData</a></li><li><a href="global.html#createEbayUrl">createEbayUrl</a></li><li><a href="global.html#createTabContent">createTabContent</a></li><li><a href="global.html#doError">doError</a></li><li><a href="global.html#doTheSignIn">doTheSignIn</a></li><li><a href="global.html#ebayKeyWords">ebayKeyWords</a></li><li><a href="global.html#getBrand">getBrand</a></li><li><a href="global.html#getFilters">getFilters</a></li><li><a href="global.html#getTabIndex">getTabIndex</a></li><li><a href="global.html#hideModalSpinner">hideModalSpinner</a></li><li><a href="global.html#hideSearch">hideSearch</a></li><li><a href="global.html#hideSpinner">hideSpinner</a></li><li><a href="global.html#keyEbay">keyEbay</a></li><li><a href="global.html#loadLimitsRangeSlider">loadLimitsRangeSlider</a></li><li><a href="global.html#logOutAccount">logOutAccount</a></li><li><a href="global.html#lowerVal">lowerVal</a></li><li><a href="global.html#pageSize">pageSize</a></li><li><a href="global.html#paginate">paginate</a></li><li><a href="global.html#paginateTabs">paginateTabs</a></li><li><a href="global.html#patt">patt</a></li><li><a href="global.html#searchItem">searchItem</a></li><li><a href="global.html#showModalSpinner">showModalSpinner</a></li><li><a href="global.html#showSpinner">showSpinner</a></li><li><a href="global.html#signInFacebook">signInFacebook</a></li><li><a href="global.html#signinGit">signinGit</a></li><li><a href="global.html#signInGoogle">signInGoogle</a></li><li><a href="global.html#signinTwitter">signinTwitter</a></li><li><a href="global.html#signInWith">signInWith</a></li><li><a href="global.html#tabIndex">tabIndex</a></li><li><a href="global.html#upperVal">upperVal</a></li><li><a href="global.html#validateSignIn">validateSignIn</a></li><li><a href="global.html#validateSignUp">validateSignUp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 04 2018 16:19:50 GMT+0000 (Hora estándar GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
